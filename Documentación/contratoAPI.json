@@ -1,0 +1,232 @@
+request:
+  payload: {
+    "nombre": "String",
+    "img": "String"
+}
+
+// GET /
+response:
+  payload: {
+    "nombre": "Producto 1", // String
+    "img": "url_imagen_1" // String
+}
+
+// GET /productos
+response:
+  payload: {
+    "id": 1, // Int
+    "nombre": "Producto 1", // String
+    "descripcion": "Descripción del producto 1", // String
+    "precio": 100, // Int
+    "img": "url_imagen_1", // String
+    "stock": 20, // Int
+    "likes": "Lídes del producto 1" // Int
+}
+
+// GET /producto/{id}
+request:
+  payload:{
+    "id": "1" // Int
+  }
+
+// GET /productos/{id}
+response:
+  payload: {
+    "id": 1, // Int
+    "nombre": "Producto 1", // String
+    "descripcion": "Descripción del producto 1", // String
+    "precio": 100, // Int
+    "img": "url_imagen_1", // String
+    "stock": 20, // Int
+    "likes": "Lídes del producto 1" // Int
+}
+
+// POST /login
+request:
+  payload:{
+    "email": "usuario@example.com", // String
+    "password": "contraseña" // String
+  }
+
+// POST /login
+response:
+  payload: {
+    "token": "jwt_token_aqui", // String
+    "user": {
+      "id": 1, // Number
+      "email": "usuario@example.com", // String
+    }
+}
+
+// POST /registrar
+request:
+  payload:{
+    "nombre": "Juan", // String
+    "apellido": "Pérez", // String
+    "email": "juan@example.com", // String
+    "password": "contraseña", // String
+    "direccion": "Dirección del usuario", // String
+    "telefono": "123456789" // Int
+  }
+
+// POST /registrar
+response:
+  payload: {
+    "mensaje": "Usuario registrado con éxito." // String
+  }
+
+// GET /mi-perfil
+request:
+  Authorization: Bearer <token>
+
+// GET /mi-perfil
+response:
+  payload: {
+    "id": 1, // Int
+    "nombre": "Juan", // String
+    "apellido": "Pérez", // String
+    "email": "juan@example.com", // String
+    "direccion": "Dirección del usuario", // String
+    "telefono": "123456789", // Int
+    "is_admin": false //Boolean
+  }
+
+// PUT /mi-perfil
+request:
+  Authorization: Bearer <token>
+  payload: {
+    "nombre": "Juan", // String
+    "apellido": "Pérez", // String
+    "direccion": "Nueva dirección", // String
+    "telefono": "987654321" // Int
+  }
+
+// PUT /mi-perfil
+response:
+  payload: {
+    "mensaje": "Perfil actualizado con éxito." // String
+  }
+
+// GET /mi-perfil/favoritos
+request:
+  Authorization: Bearer <token>
+
+// GET /mi-perfil/favoritos
+response:
+  payload: {
+    "id": 1, // Int
+    "nombre": "Producto 1", // String
+    "descripcion": "Descripción del producto 1", // String
+    "precio": 100, // Int
+    "img": "url_imagen_1", // String
+    "stock": 20, // Int
+    "likes": "Lídes del producto 1" // Int
+  }
+
+
+// POST /productos
+request:
+  Authorization: Bearer <token>
+  payload:{
+    "nombre": "Producto nuevo", // String
+    "descripcion": "Descripción del nuevo producto", // String
+    "precio": 150, // Int
+    "img": "url_imagen_nueva", // String
+    "stock": 30, // Int
+    "likes": "Líkes del nuevo producto" // Int
+  }
+
+// POST /productos
+response:
+  payload: {
+    "mensaje": "Producto creado con éxito."
+  }
+
+
+// PUT /productos/{id}
+request:
+  Authorization: Bearer <token>
+  payload: {
+    "nombre": "Producto actualizado", // String
+    "descripcion": "Descripción actualizada", // String
+    "precio": 200, // Int
+    "img": "url_imagen_actualizada", // String
+    "stock": 40, // Int
+    "likes": "Líkes actualizados" // Int
+  }
+
+// PUT /productos/{id}
+response:
+  payload: {
+    "mensaje": "Producto actualizado con éxito."
+  }
+
+
+// DELETE /productos/{id}
+request:
+  Authorization: Bearer <token>
+  payload:{
+    "id": "1" // Int
+  }
+
+// DELETE /productos/{id}
+response:
+  payload: {
+    "mensaje": "Producto eliminado con éxito." // String
+  }
+
+// GET /carrito
+request:
+  Authorization: Bearer <token>
+
+// GET /carrito
+response:
+  payload: {
+    "id": 1, // Int
+    "nombre": "Producto 1", // String
+    "precio": 100, // Int
+    "cantidad": 2 // Int
+  }
+
+// POST /carrito
+request:
+  Authorization: Bearer <token>
+  payload:{
+    "producto_id": 1, // Int
+    "cantidad": 2 // Int
+  }
+
+
+// POST /carrito
+response:
+  payload: {
+    "mensaje": "Producto añadido al carrito con éxito." // String
+  }
+
+// DELETE /carrito/{producto_id}
+request:
+  Authorization: Bearer <token>
+  payload:{
+    "id": "1" // Int
+  }
+
+// DELETE /carrito/{producto_id}
+response:
+  payload: {
+    "mensaje": "Producto eliminado del carrito con éxito." // String
+  }
+
+
+// POST /pago
+request:
+  Authorization: Bearer <token>
+  payload:{
+    "direccion": "Dirección de envío", // String
+  }
+
+// POST /pago
+response:
+  payload: {
+    "mensaje": "Pago procesado con éxito." // String
+  }
+

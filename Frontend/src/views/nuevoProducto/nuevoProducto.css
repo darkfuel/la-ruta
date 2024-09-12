@@ -1,0 +1,35 @@
+.tituloNuevoProducto{
+  margin: 30px 200px;
+}
+.formNuevoProducto{
+  margin: 20px 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.producto{
+  width: 40%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.detalleProducto{
+  width: 40%;
+}
+
+.imgNuevoProducto{
+  width: 430px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px black;
+
+}
+
+#cargarNuevoProducto{
+  display: none;
+}
+
+.descripcionProducto{
+  height: 200px;
+}

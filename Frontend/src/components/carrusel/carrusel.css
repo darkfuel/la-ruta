@@ -1,0 +1,10 @@
+.carrusel{
+  width: 80%;
+
+}
+.contenedorCarrusel{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}

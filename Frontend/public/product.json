@@ -1,0 +1,30 @@
+[
+  {"id":"1",
+    "title":"Bicicleta de Ruta",
+    "img":"https://contents.mediadecathlon.com/p2071193/1cr1/k$2152a928164301a8c155ccca2f4399d9/bicicleta-de-ruta-aro-700quote-11-velocidades-edr-af-blanco.jpg?format=auto&f=768x0",
+    "price": 130000,
+    "descripción":"RUTA 1.0 : Rendimiento excelente en todas las superficies, incluso en terrenos muy abruptos.",
+    "descripción2":"Nuestro nuevo marco NEO 20 utiliza la tecnología Evo Vario. El aluminio es la elección perfecta para obtener una excelente relación dinamismo/comodidad. ZLa diferencia de grosor de los tubos reduce considerablemente el peso y garantiza un rendimiento excelente en todas las superficies, incluso en terrenos muy abruptos. Marco homologado UCI."
+  },
+  {"id":"2",
+  "title":"Bicileta de Montaña",
+  "img":"https://http2.mlstatic.com/D_NQ_NP_645721-MLC70018030677_062023-O.webp",
+  "price":"345000",
+  "descripción":"MTB 3.0 Bicicleta ideal para el transporte diaro o el mountainbike recreacional.",
+  "descripción2":"Bicicleta de aluminio aro 29 Geometría ideal para el transporte diaro o el mountainbike recreacional. La horquilla Suntour XCT recorre 100mm y tiene una rigidez mayor a las demás de su gama. Bloqueo con dial para subidas o terrenos compactos que permitan alcanzar mayor velocidad. Llantas de aluminio con neumáticos ChaoYang edición Skinwall ideal para condiciones rápidas.Transmisión Sensah 1x12 RX12 Frenos hidráulicos de discos 160mm Mazas eje 9mm QR"
+  },
+  {"id":"3",
+  "title":"Bicicleta Gravel",
+  "img":"https://beldacycles.cl/21395-large_default/fuji-jari-11-700c-khaki-green-bicicleta-gravel.jpg",
+  "price":"657000",
+  "descripción":"GRAVEL TOP Diseñada para recorrer tanto en ruta como senderos, turismo, competencias de Cyclocross.",
+  "descripción2":"Rendimiento, utilidad y versatilidad, Jari los ofrece todos. Diseñada para recorrer tanto en ruta como senderos, turismo, competencias de Cyclocross y prácticamente cualquier cosa que puedas lanzar. Jari es un camaleón que se transforma a la perfección en lo que necesites que sea. La geometría larga y holgada proporciona una conducción estable y que inspira confianza sin importar el terreno, lo que le permite moler grava o abordar el asfalto cómodamente durante todo el día. Recuerde que el viaje es la mejor parte del viaje y el Jari es el compañero de viaje perfecto."
+  },
+  {"id":"4",
+  "title":"Bicileta Estática",
+  "img":"https://sparta.cl/media/catalog/product/e/l/eliptica_143_b.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=550&width=600&canvas=600:550",
+  "price":"256000",
+  "descripción":"STATIC 2000 ejercitate en todo momento - indoor sports.",
+  "descripción2":"Con el fin de proteger la integridad de nuestros clientes y colaboradores, el personal de Sparta a cargo del despacho sólo está autorizado a entregar este tipo de productos a nivel calle, si se trata de un edificio, se entregará en conserjería.Asimismo, no podrán subir por las escaleras, desarmar puertas o ventanas, utilizar cuerdas u otros elementos para levantar los productos a pisos superiores. Siempre será responsabilidad del cliente trasladar la máquina al lugar de armado."
+  }
+]
