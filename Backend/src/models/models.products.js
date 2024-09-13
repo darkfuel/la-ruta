@@ -29,7 +29,9 @@ export const findById = async (id) => await db('SELECT * FROM productos WHERE id
 export const deleteById = async (id) => await db('DELETE FROM productos WHERE id = $1;', [id])
 
 export const updateFavorite = async (id) => {
-  const { rows } = await db('SELECT favoritos FROM productos WHERE id = $1;', [id])
+  console.log(id, 'id back')
+  const { rows } = await db('SELECT * FROM productos WHERE id = $1;', [id])
+  console.log(rows, 'consulta')
   const favorite = (rows[0].favoritos)
   if (favorite === false) {
     const queryTrue = 'UPDATE productos SET favoritos = true WHERE id = $1;'

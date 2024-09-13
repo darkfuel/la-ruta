@@ -75,7 +75,6 @@ app.put('/editarUsuario', authToken, async (req, res) => {
 
 app.post('/nuevo-producto', authToken, async (req, res) => {
   try {
-    console.log('soy el body', req.body)
     const { nombre, precio, stock, descripcion, img } = req.body
     const authorization = req.header('Authorization')
     const [, token] = authorization.split(' ')
@@ -114,7 +113,7 @@ app.get('/productos/:id', async (req, res) => {
 
 app.put('/productos/:id', async (req, res) => {
   try {
-    const result = await updateFavorite(req.body.id)
+    const result = await updateFavorite(req.params.id)
     res.status(200).json({ status: true, message: result })
   } catch (error) {
     console.error('Error al actualizar', error)

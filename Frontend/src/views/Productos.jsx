@@ -28,6 +28,8 @@ const Productos = () => {
     card.descripcion.toLowerCase().includes(filtro.toLowerCase())
   )
 
+  console.log('data', productosFiltrados)
+
   const botones = (card) => {
     if (!getNuevoUsuario || !getNuevoUsuario.is_admin) {
       return (
@@ -57,13 +59,8 @@ const Productos = () => {
         {productosFiltrados.map((card) => (
           <Container className='col-md-3 p-3' key={card.id}>
             <Card>
-
               {!card.favoritos ? <Star color='gray' size={30} onClick={() => addFavorite(card.id)} /> : <StarFill color='gray' size={30} onClick={() => addFavorite(card.id)} />}
-              {/* <Card.Img variant='top' className='img-fluid' src={card.img} /> */}
-
-              {console.log('Image path:', card.img)}
               <Card.Img variant='top' className='img-fluid' src={card.img === '' ? imgSrc : card.img} alt={card.nombre} />
-
               <Card.Body>
                 <Card.Title>{card.nombre}</Card.Title>
                 <hr />

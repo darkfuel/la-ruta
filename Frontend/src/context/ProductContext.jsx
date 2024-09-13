@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from 'react'
 import { ENDPOINT } from '../config/constantes.jsx'
 // import { updateFavorite } from '../../../Backend/src/models/models.products.js'
 export const ProductContext = createContext()
+console.log(ENDPOINT)
 
 const ProductProvider = ({ children }) => {
   const defaultFile = '/img/imgNuevoProducto.png'
@@ -35,6 +36,7 @@ const ProductProvider = ({ children }) => {
   }
 
   const addFavorite = (id) => {
+    console.log(id, 'addfavorite')
     axios.put(`${ENDPOINT.productos}/${id}`)
       .then(({ data }) => {
         console.log('producto actualizado', data)
