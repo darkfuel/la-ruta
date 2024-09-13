@@ -1,4 +1,5 @@
-export const URLBASE = import.meta.env.VITE_URL_BACKEND_HOST ?? 'http://localhost:3000'
+export const URLBASE = import.meta.env.VITE_URL_BACKEND_HOST
+// export const URLBASE = 'http://localhost:3000'
 
 export const ENDPOINT = {
   detalle: `${URLBASE}/productos`,
