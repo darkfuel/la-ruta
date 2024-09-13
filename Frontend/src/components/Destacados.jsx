@@ -4,8 +4,9 @@ import { Container, Row, Card, Button } from 'react-bootstrap'
 import { Star, StarFill } from 'react-bootstrap-icons'
 
 const Destacados = () => {
-  const { productos, addFavorite, addProduct, imgSrc } = useContext(ProductContext)
-  const producFiltered = productos.filter((product) => product.favorite === true)
+  const { productos, addProduct, imgSrc } = useContext(ProductContext)
+  const producFiltered = productos.filter((product) => product.favoritos === true)
+
   return (
     <Container fluid className='mb-5'>
       <Row className='fluid text-center mt-2 mb-2 justify-content-center' />
@@ -13,7 +14,7 @@ const Destacados = () => {
         {producFiltered.map(card => (
           <Container className='col-md-3 p-3' key={card.id}>
             <Card>
-              {!card.favoritos ? <Star color='gray' size={30} onClick={() => addFavorite(card.id)} /> : <StarFill color='gray' size={30} onClick={() => addFavorite(card.id)} />}
+              {!card.favoritos ? <Star color='gray' size={30} /> : <StarFill color='gray' size={30} />}
               <Card.Img variant='top' className='img-fluid' src={card.img === '' ? imgSrc : card.img} alt={card.nombre} />
               <Card.Body>
                 <Card.Title>{card.nombre}</Card.Title>

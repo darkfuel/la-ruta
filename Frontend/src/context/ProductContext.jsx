@@ -36,7 +36,6 @@ const ProductProvider = ({ children }) => {
   }
 
   const addFavorite = (id) => {
-    console.log(id, 'addfavorite')
     axios.put(`${ENDPOINT.productos}/${id}`)
       .then(({ data }) => {
         console.log('producto actualizado', data)

@@ -49,6 +49,22 @@ const Productos = () => {
     }
   }
 
+  const favoritos = (card) => {
+    if (!getNuevoUsuario || !getNuevoUsuario.is_admin) {
+      return (
+        <>
+          {!card.favoritos ? <Star color='gray' size={30} /> : <StarFill color='gray' size={30} />}
+        </>
+      )
+    } else {
+      return (
+        <>
+          {!card.favoritos ? <Star color='gray' size={30} onClick={() => addFavorite(card.id)} /> : <StarFill color='gray' size={30} onClick={() => addFavorite(card.id)} />}
+        </>
+      )
+    }
+  }
+
   return (
     <Container fluid className='mb-5'>
       <Row className='fluid text-center mt-2 mb-2 justify-content-center'>
@@ -59,7 +75,8 @@ const Productos = () => {
         {productosFiltrados.map((card) => (
           <Container className='col-md-3 p-3' key={card.id}>
             <Card>
-              {!card.favoritos ? <Star color='gray' size={30} onClick={() => addFavorite(card.id)} /> : <StarFill color='gray' size={30} onClick={() => addFavorite(card.id)} />}
+              <div>{favoritos(card)}</div>
+              {/* {!card.favoritos ? <Star color='gray' size={30} onClick={() => addFavorite(card.id)} /> : <StarFill color='gray' size={30} onClick={() => addFavorite(card.id)} />} */}
               <Card.Img variant='top' className='img-fluid' src={card.img === '' ? imgSrc : card.img} alt={card.nombre} />
               <Card.Body>
                 <Card.Title>{card.nombre}</Card.Title>
