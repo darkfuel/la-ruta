@@ -26,9 +26,9 @@ const Login = ({ setBasicActive }) => {
 
   const handleClick = (valor) => {
     if (valor === 'registrate') {
-      setBasicActive(valor);
+      setBasicActive(valor)
     } else {
-      console.error("Valor inválido");
+      console.error('Valor inválido')
     }
   }
 
@@ -98,7 +98,7 @@ const Login = ({ setBasicActive }) => {
         <div className='text-center'>
           <p>
             ¿No estás registrado?
-            <a href="#" onClick={() => handleClick('registrate')}>
+            <a href='#' onClick={() => handleClick('registrate')}>
               Regístrate
             </a>
           </p>
