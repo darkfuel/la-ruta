@@ -12,11 +12,11 @@ export const AllProducts = async (query) => {
   }
 }
 
-export const registrarProducto = async ({ nombre, precio, stock, descripcion, imgPath, idUser }) => {
-  console.log('datos desde models.productos', nombre, precio, stock, descripcion, imgPath, idUser)
+export const registrarProducto = async ({ nombre, precio, stock, descripcion, img, idUser }) => {
+  console.log('datos desde models.productos', nombre, precio, stock, descripcion, img, idUser)
 
   const query = 'INSERT INTO productos (nombre, precio, stock, descripcion, img, creado_por) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;'
-  const values = [nombre, precio, stock, descripcion, imgPath, idUser]
+  const values = [nombre, precio, stock, descripcion, img, idUser]
   const { rowCount } = await db(query, values)
 
   if (!rowCount) {

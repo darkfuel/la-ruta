@@ -5,11 +5,13 @@ import { ENDPOINT } from '../config/constantes.jsx'
 export const ProductContext = createContext()
 
 const ProductProvider = ({ children }) => {
+  const defaultFile = '/img/imgNuevoProducto.png'
   const [total, setTotal] = useState(0)
   const [productos, setProductos] = useState([])
   const [productDetails, setProductDetails] = useState({})
   const [cart, setCart] = useState([])
   const [filtro, setFiltro] = useState('')
+  const [imgSrc, setImgSrc] = useState(defaultFile)
 
   const getData = async () => {
     const res = await fetch(`${ENDPOINT.productos}`)
@@ -83,13 +85,15 @@ const ProductProvider = ({ children }) => {
     setTotal,
     setProductDetails,
     setFiltro,
+    setImgSrc,
     addProduct,
     addFavorite,
     upCount,
     donwCount,
     eraseCart,
     borrarProduct,
-    getData
+    getData,
+    imgSrc
   }
 
   return (

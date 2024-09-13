@@ -1,28 +1,16 @@
 import express from 'express'
 import cors from 'cors'
-import morgan from 'morgan'
 import { registrarUsuario, validarUsuario, getUsuario, editarUsuario } from '../models/models.user.js'
 import { jwtSign, jwtDecode } from '../utils/jwt/jwt.js'
 import { authToken } from '../middlewares/authToken.js'
-import multer from 'multer'
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { multerMidleware } from '../middlewares/multer.js'
 
 import { AllProducts, findById, deleteById, registrarProducto, updateFavorite, editarProducto } from '../models/models.products.js'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 const app = express()
 const PORT = process.env.PORT ?? 3000
 
 app.use(cors())
 app.use(express.json())
-app.use(morgan('dev'))
-// Sirve archivos estáticos desde la carpeta "uploads"
-app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')))
 
 app.post('/users', async (req, res) => {
   try {
@@ -85,32 +73,10 @@ app.put('/editarUsuario', authToken, async (req, res) => {
   }
 })
 
-// Crea la carpeta "uploads" si no existe para guardar las imagenes
-const uploadsDir = path.resolve(__dirname, '..', 'uploads')
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true })
-}
-
-// Configuración del almacenamiento de multer
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    // Asegúrate de que la ruta es correcta
-    const uploadsDir = path.resolve(__dirname, '..', 'uploads')
-    cb(null, uploadsDir)
-  },
-  filename: (req, file, cb) => {
-    // Genera un nombre único para el archivo
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, uniqueSuffix + '-' + file.originalname)
-  }
-})
-
-const upload = multer({ storage })
-
-app.post('/nuevo-producto', authToken, multerMidleware, upload.single('img'), async (req, res) => {
+app.post('/nuevo-producto', authToken, async (req, res) => {
   try {
-    const { nombre, precio, stock, descripcion } = req.body
-    const imgPath = req.file ? `/uploads/${req.file.filename}` : null
+    console.log('soy el body', req.body)
+    const { nombre, precio, stock, descripcion, img } = req.body
     const authorization = req.header('Authorization')
     const [, token] = authorization.split(' ')
     const { idUser, isAdmin } = jwtDecode(token)
@@ -118,8 +84,8 @@ app.post('/nuevo-producto', authToken, multerMidleware, upload.single('img'), as
     if (!isAdmin) {
       return res.status(401).json({ message: 'Usuario no autorizado para agregar productos' })
     }
-
-    await registrarProducto({ nombre, precio, stock, descripcion, imgPath, idUser })
+    console.log({ nombre, precio, stock, descripcion, img })
+    await registrarProducto({ nombre, precio, stock, descripcion, img, idUser })
     res.status(200).json({ status: true, message: 'Producto agregado con éxito' })
   } catch (error) {
     res.status(error.code || 500).json({ message: 'Error en la conexión', error })

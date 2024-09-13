@@ -6,7 +6,7 @@ import { ProductContext } from '../context/ProductContext.jsx'
 
 const Carrito = () => {
   const navigate = useNavigate()
-  const { setTotal, total, cart, upCount, donwCount, eraseCart } =
+  const { setTotal, total, cart, upCount, donwCount, eraseCart, imgSrc } =
     useContext(ProductContext)
   const totalCart = cart.reduce(
     (acum, actualValu) => acum + actualValu.precio * actualValu.count,
@@ -22,7 +22,7 @@ const Carrito = () => {
           {cart.map((producto, index) => (
             <div key={producto.id} className='d-flex justify-content-around'>
               <div className='d-flex'>
-                <img src={`http://localhost:3000${producto.img}`} alt={producto.nombre} width={300} className='p-3' />
+                <img src={producto.img === '' ? imgSrc : producto.img} alt={producto.nombre} width={300} className='p-3' />
                 <p className='mt-3 text-capitalize'>
                   <strong>{producto.nombre}</strong>
                 </p>

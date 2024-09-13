@@ -11,8 +11,8 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   port: process.env.DB_PORT,
-  allowExitOnIdle: true,
-  ssl: true
+  allowExitOnIdle: true
+  // ssl: true
 })
 
 export const db = async (query, values) => {
@@ -25,16 +25,3 @@ export const db = async (query, values) => {
     throw newError
   }
 }
-
-const testConnection = async () => {
-  try {
-    const client = await pool.connect()
-    const res = await client.query('SELECT NOW()')
-    console.log('Conexión exitosa:', res.rows[0])
-    client.release()
-  } catch (err) {
-    console.error('Error en la conexión:', err)
-  }
-}
-
-testConnection()

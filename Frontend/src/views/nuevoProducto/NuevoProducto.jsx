@@ -1,25 +1,24 @@
-import { useRef, useState } from 'react'
+import { useState, useContext } from 'react'
 import './nuevoProducto.css'
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit'
 import Swal from 'sweetalert2'
 import { ENDPOINT } from '../../config/constantes'
+
+import { ProductContext } from '../../context/ProductContext'
 import axios from 'axios'
 
 const NuevoProducto = () => {
+  const { imgSrc, setImgSrc } = useContext(ProductContext)
   const token = window.sessionStorage.getItem('token')
 
-  console.log('token desde nuevo producto:', token)
-
   const defaultFile = '/img/imgNuevoProducto.png'
-  const [imgSrc, setImgSrc] = useState(defaultFile)
-  const fileInputRef = useRef(null)
   const [producto, setProducto] = useState({
     nombre: '',
     precio: '',
     stock: '',
-    descripcion: ''
+    descripcion: '',
+    img: ''
   })
-  const [file, setFile] = useState(null) // Para manejar el archivo
 
   const handleProduct = (e) => {
     const { name, value } = e.target
@@ -29,16 +28,9 @@ const NuevoProducto = () => {
     }))
   }
 
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0]
-    if (selectedFile) {
-      setFile(selectedFile) // Guarda el archivo seleccionado
-      const reader = new FileReader()
-      reader.onload = function (e) {
-        setImgSrc(e.target.result)
-      }
-      reader.readAsDataURL(selectedFile)
-    }
+  const handleChange = (event) => {
+    const valor = event.target.value
+    setImgSrc(valor)
   }
 
   const handleForm = (e) => {
@@ -70,12 +62,10 @@ const NuevoProducto = () => {
     formData.append('precio', producto.precio)
     formData.append('stock', producto.stock)
     formData.append('descripcion', producto.descripcion)
-    formData.append('img', file) // Añade el archivo al formulario
-    console.log(file)
-    console.log(formData)
+    formData.append('img', imgSrc) // Añade el archivo al formulario
 
     axios
-      .post(ENDPOINT.nuevoProducto, formData, { headers: { Authorization: `Bearer ${token}` } })
+      .post(ENDPOINT.nuevoProducto, { ...producto, img: imgSrc }, { headers: { Authorization: `Bearer ${token}` } })
       .then(() => {
         Swal.fire({
           position: 'top-end',
@@ -115,17 +105,12 @@ const NuevoProducto = () => {
             alt='agregar nuevo producto'
           />
           <input
-            type='file'
-            name='nuevoProducto'
-            id='cargarNuevoProducto'
-            accept='image/*'
-            ref={fileInputRef}
-            onChange={handleFileChange}
+            type='text'
+            className='form-control'
+            placeholder='Buscar productos...'
+            value={imgSrc}
+            onChange={handleChange}
           />
-
-          <label htmlFor='cargarNuevoProducto' className='btn btn-primary'>
-            Agregar imagen
-          </label>
         </div>
 
         <div className='detalleProducto'>

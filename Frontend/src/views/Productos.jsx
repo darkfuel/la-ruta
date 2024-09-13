@@ -10,10 +10,8 @@ import ModalEditProduct from '../components/ModalEditProduct.jsx'
 // import { registrarUsuario } from '../../../Backend/src/models/models.user.js'
 
 const Productos = () => {
-  const { addProduct, addFavorite, borrarProduct, productos, getData, filtro, setFiltro } = useContext(ProductContext)
+  const { addProduct, addFavorite, borrarProduct, productos, getData, filtro, setFiltro, imgSrc } = useContext(ProductContext)
   const navigate = useNavigate()
-
-  console.log(productos)
 
   useEffect(() => {
     getData()
@@ -64,7 +62,7 @@ const Productos = () => {
               {/* <Card.Img variant='top' className='img-fluid' src={card.img} /> */}
 
               {console.log('Image path:', card.img)}
-              <Card.Img variant='top' className='img-fluid' src={`http://localhost:3000${card.img}`} alt={card.nombre} />
+              <Card.Img variant='top' className='img-fluid' src={card.img === '' ? imgSrc : card.img} alt={card.nombre} />
 
               <Card.Body>
                 <Card.Title>{card.nombre}</Card.Title>
