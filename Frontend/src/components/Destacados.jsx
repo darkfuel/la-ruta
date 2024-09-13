@@ -6,7 +6,6 @@ import { Star, StarFill } from 'react-bootstrap-icons'
 const Destacados = () => {
   const { productos, addFavorite, addProduct, imgSrc } = useContext(ProductContext)
   const producFiltered = productos.filter((product) => product.favorite === true)
-  console.log(producFiltered)
   return (
     <Container fluid className='mb-5'>
       <Row className='fluid text-center mt-2 mb-2 justify-content-center' />

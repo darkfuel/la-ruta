@@ -114,7 +114,7 @@ app.get('/productos/:id', async (req, res) => {
 
 app.put('/productos/:id', async (req, res) => {
   try {
-    const result = await updateFavorite(req.params.id)
+    const result = await updateFavorite(req.body.id)
     res.status(200).json({ status: true, message: result })
   } catch (error) {
     console.error('Error al actualizar', error)
