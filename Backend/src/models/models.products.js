@@ -29,14 +29,14 @@ export const findById = async (id) => await db('SELECT * FROM productos WHERE id
 export const deleteById = async (id) => await db('DELETE FROM productos WHERE id = $1;', [id])
 
 export const updateFavorite = async (id) => {
-  const { rows } = await db('SELECT favorite FROM productos WHERE id = $1;', [id])
+  const { rows } = await db('SELECT favoritos FROM productos WHERE id = $1;', [id])
   const favorite = (rows[0].favorite)
   if (favorite === false) {
-    const queryTrue = 'UPDATE productos SET favorite = true WHERE id = $1;'
+    const queryTrue = 'UPDATE productos SET favoritos = true WHERE id = $1;'
     const values = [id]
     return await db(queryTrue, values)
   } else {
-    const queryFalse = 'UPDATE productos SET favorite = false WHERE id = $1;'
+    const queryFalse = 'UPDATE productos SET favoritos = false WHERE id = $1;'
     const values = [id]
     return await db(queryFalse, values)
   }

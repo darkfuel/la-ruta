@@ -58,7 +58,7 @@ const Productos = () => {
           <Container className='col-md-3 p-3' key={card.id}>
             <Card>
 
-              {!card.favorite ? <Star color='gray' size={30} onClick={() => addFavorite(card.id)} /> : <StarFill color='gray' size={30} onClick={() => addFavorite(card.id)} />}
+              {!card.favoritos ? <Star color='gray' size={30} onClick={() => addFavorite(card.id)} /> : <StarFill color='gray' size={30} onClick={() => addFavorite(card.id)} />}
               {/* <Card.Img variant='top' className='img-fluid' src={card.img} /> */}
 
               {console.log('Image path:', card.img)}
