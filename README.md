@@ -1,14 +1,3 @@
-Se muestra de forma temporal las vistas privadas que posteriormente quedarán dentro de la función que valida el login.
-
-
-            {/* hay que eliminarlo, esto es solo para ver el componente */}
-            <NavLink className={claseActive} to='/perfil'>
-              Perfil
-            </NavLink>
-
-            {/* hay que eliminarlo, esto es solo para ver el componente */}
-            <NavLink className={claseActive} to='/nuevo-producto'>
-              Agregar producto
-            </NavLink>
-
-De esta manera, se puede validar el componente.
+Frontend : https://la-ruta2.onrender.com
+Backend :  https://la-ruta-backend.onrender.com
+db: postgresql://la_ruta_postgrest_user:OXqsOlP8M8mjbDJkRuggu1XDGGZljYju@dpg-crh19m5svqrc7386qvbg-a.oregon-postgres.render.com/la_ruta_postgrest
