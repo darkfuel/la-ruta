@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import Payment from '../components/Payment.jsx'
 import { ProductContext } from '../context/ProductContext.jsx'
 
@@ -15,21 +15,27 @@ const Carrito = () => {
   setTotal(totalCart)
 
   return (
-    <div className='w-100'>
-      <h5 className='m-5'>Detalle del Pedido:</h5>
-      <Container className='fluid m-3 text-center d-flex flex-row gap-5 justify-content-between'>
-        <div className=' fluid w-100 shadow-lg p-5 mb-3 bg-body-tertiary rounded'>
+    <Container>
+      <Row>
+        <Col><h5 className='m-5'>Detalle del Pedido:</h5></Col>
+      </Row>
+      <Row>
+        <div className='col-md-8'>
+          <div className='w-100 shadow-lg p-5 mb-3 bg-body-tertiary rounded mb-5'>
+
           {cart.map((producto, index) => (
-            <div key={producto.id} className='d-flex justify-content-around'>
-              <div className='d-flex'>
-                <img src={producto.img === '' ? imgSrc : producto.img} alt={producto.nombre} width={300} className='p-3' />
-                <p className='mt-3 text-capitalize'>
+            <div key={producto.id} className='border rounded bg-light mb-3 text-center'>
+              <div className='col-md-12'>
+              <h5 className='mt-3'>
                   <strong>{producto.nombre}</strong>
-                </p>
+                </h5>
+                <img src={producto.img === '' ? imgSrc : producto.img} alt={producto.nombre} width={300} className='p-3 shadow border' />
+
               </div>
-              <div className='ms-5 m-3'>
+              <div className='col-md-12'>
                 <p>Precio : {producto.precio}</p>
-                <div className='d-flex gap-3'>
+
+                <div className='d-flex justify-content-center align-items-center gap-3 text-center'>
                   <button
                     className='btn btn-danger '
                     onClick={() => donwCount(index)}
@@ -43,17 +49,16 @@ const Carrito = () => {
                   >
                     +
                   </button>
-
                 </div>
               </div>
               <hr />
             </div>
           ))}
+          </div>
         </div>
-
-        <div className='w-25'>
-          <h2>Total: {total}</h2>
-          <button className='btn btn-secondary' onClick={() => eraseCart()}>
+        <div className='col-md-4 text-center mb-3'>
+          <h2 className='mb-3'>Total: {total}</h2>
+          <button className='btn btn-secondary me-3' onClick={() => eraseCart()}>
             Limpiar
           </button>
           <button className='btn btn-info' onClick={() => navigate('/')}>
@@ -62,8 +67,8 @@ const Carrito = () => {
           <hr />
           <Payment eraseCart={eraseCart} />
         </div>
-      </Container>
-    </div>
+    </Row>
+    </Container>
   )
 }
 
