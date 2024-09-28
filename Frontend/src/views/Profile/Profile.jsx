@@ -4,6 +4,7 @@ import Context from '../../context/UserContext'
 import axios from 'axios'
 import './profile.css'
 import { MDBCard, MDBCardHeader, MDBCardSubTitle, MDBCardBody, MDBCardFooter, MDBCardTitle, MDBCardText } from 'mdb-react-ui-kit'
+import { Container, Row, Col } from 'react-bootstrap'
 import { ENDPOINT } from '../../config/constantes'
 import ModalEditUser from '../../components/Login/ModalEditUser'
 
@@ -29,11 +30,15 @@ const Profile = () => {
   useEffect(getNuevoUsuarioData, [])
 
   return (
-    <div className='miPerfil'>
-      <h1 className='d-flex justify-content-center pt-4'>Bienvenido a La Ruta!</h1>
-
-      <div className='contenidoMiPerfil'>
-        <MDBCard className='w-50 p-3 m-5'>
+    <div className='miPerfil Container'>
+      <Row>
+        <Col>
+        <h1 className='text-center'>Bienvenido a La Ruta!</h1>
+        </Col>
+      </Row>
+      <Row className='p-3'>
+      <div className=' col-md-6'>
+        <MDBCard className=''>
           <MDBCardHeader><MDBCardTitle>Mis Datos Personales:</MDBCardTitle></MDBCardHeader>
           <MDBCardBody>
             <div className='containerDatosPerfil'>
@@ -65,14 +70,16 @@ const Profile = () => {
           </MDBCardBody>
           <MDBCardFooter className='text-muted'> <ModalEditUser getNuevoUsuarioData={getNuevoUsuarioData} /> </MDBCardFooter>
         </MDBCard>
-
-        <img
+      </div>
+      <div className="col-md-6">
+      <img
           src='/img/mapa.png'
           className='imgPerfil img-fluid rounded'
           alt='example'
         />
-
       </div>
+      </Row>
+
     </div>
   )
 }
