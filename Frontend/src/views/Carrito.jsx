@@ -29,7 +29,7 @@ const Carrito = () => {
               <h5 className='mt-3'>
                   <strong>{producto.nombre}</strong>
                 </h5>
-                <img src={producto.img === '' ? imgSrc : producto.img} alt={producto.nombre} width={300} className='p-3 shadow border' />
+                <img src={producto.img === '' ? imgSrc : producto.img} alt={producto.nombre} width="70%" className='p-3 shadow border' />
 
               </div>
               <div className='col-md-12'>

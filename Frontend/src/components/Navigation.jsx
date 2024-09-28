@@ -46,12 +46,15 @@ const Navigation = () => {
     } else {
       return (
         <>
-          <NavLink className={claseActive} to='/perfil'>
-            Perfil
-          </NavLink>
-          <button onClick={logout} className='btn btn-danger'>
-            Salir
-          </button>
+<div className="d-flex justify-content-end align-items-center border-top pt-2">
+  <NavLink className={claseActive} to='/perfil'>
+    <span className='me-2'>Perfil</span>
+  </NavLink>
+  <button onClick={logout} className='btn btn-danger'>
+    Salir
+  </button>
+</div>
+
         </>
       )
     }
@@ -84,9 +87,9 @@ const Navigation = () => {
               Productos
             </NavLink>
             <NavLink className={claseActive} to='/Carrito'>
-              Carrito: <strong>${total}</strong>
+              Carrito: <strong className='me-4'>${total}</strong>
             </NavLink>
-            <div style={{ marginLeft: '30px' }}>{isLogin()}</div>
+            <div style={{  }}>{isLogin()}</div>
           </Nav>
         </Navbar.Collapse>
       </Container>
