@@ -65,7 +65,7 @@ const NuevoProducto = () => {
     formData.append('img', imgSrc) // Añade el archivo al formulario
 
     axios
-      .post(ENDPOINT.nuevoProducto, { ...producto, img: imgSrc }, { headers: { Authorization: `Bearer ${token}` } })
+      .post(ENDPOINT.nuevoProducto, { ...producto, img: imgSrc }, { headers: { Authorization: Bearer ${token} } })
       .then(() => {
         Swal.fire({
           position: 'top-end',
@@ -80,7 +80,7 @@ const NuevoProducto = () => {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: `${data.message}`
+          text: ${data.message}
         })
       })
 
@@ -95,27 +95,32 @@ const NuevoProducto = () => {
 
   return (
     <>
-      <div clasName='row text-center'>
-      <h2 className='tituloNuevoProducto'>Agrega un nuevo producto:</h2>
-      </div>
+    <div className="container">
+    <div className="row">
+    <h2 className='text-center mt-2'>Agrega un nuevo producto:</h2>
+    </div>
+      
       <form className='formNuevoProducto' onSubmit={handleForm}>
-        <div className='producto d-flex flex-column'>
+        <div className="form-row">
+
+        
+        <div className='form-group col mb-4'>
           <img
             id='imgNuevoProducto'
-            className='imgNuevoProducto'
+            className='img-fluid'
             src={imgSrc}
             alt='agregar nuevo producto'
           />
           <input
             type='text'
-            className='form-control'
+            className='form-control mt-3'
             placeholder='Buscar productos...'
             value={imgSrc}
             onChange={handleChange}
           />
         </div>
 
-        <div className='detalleProducto'>
+        <div className='form-group col'>
           <MDBInput
             type='text'
             id='NombreProducto'
@@ -162,9 +167,11 @@ const NuevoProducto = () => {
             Agregar Producto
           </MDBBtn>
         </div>
+        </div>
       </form>
+      </div>
     </>
   )
 }
 
-export default NuevoProducto
+export default NuevoProducto
