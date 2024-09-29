@@ -95,7 +95,9 @@ const NuevoProducto = () => {
 
   return (
     <>
+      <div clasName='row text-center'>
       <h2 className='tituloNuevoProducto'>Agrega un nuevo producto:</h2>
+      </div>
       <form className='formNuevoProducto' onSubmit={handleForm}>
         <div className='producto d-flex flex-column'>
           <img
