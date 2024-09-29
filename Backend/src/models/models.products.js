@@ -1,9 +1,8 @@
 import { db } from '../database/conectionDB.js'
 
 export const AllProducts = async (query) => {
-  const queryString = 'SELECT * FROM productos ORDER BY id DESC'
-
   try {
+    const queryString = 'SELECT * FROM productos ORDER BY id DESC'
     const result = await db(queryString)
     return result
   } catch (error) {
