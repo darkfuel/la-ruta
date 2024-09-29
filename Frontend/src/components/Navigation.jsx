@@ -70,7 +70,7 @@ const Navigation = () => {
     isActive ? 'nav-item nav-link active' : 'nav-item nav-link'
 
   return (
-    <Navbar expand='lg' className='bg-secondary'>
+    <Navbar expand='lg' className='bg-secondary pb-3'>
       <Container>
         <NavLink className='navbar-brand' to='/'>
           <Bicycle color='gray' size={50} className='ms-5' />
