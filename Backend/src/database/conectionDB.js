@@ -12,7 +12,7 @@ const pool = new Pool({
   database: process.env.DB_DATABASE,
   port: process.env.DB_PORT,
   allowExitOnIdle: true,
-  ssl: false
+  ssl: true
 })
 
 export const db = async (query, values) => {
