@@ -34,14 +34,14 @@ const Productos = () => {
     if (!getNuevoUsuario || !getNuevoUsuario.is_admin) {
       return (
         <>
-          <Button variant='info' onClick={() => navigate(`/productos/${card.id}`)}>Ver Detalle</Button>
+          <Button className='me-3' variant='info' onClick={() => navigate(`/productos/${card.id}`)}>Ver Detalle</Button>
           <Button variant='secondary' onClick={() => addProduct(card)}>Agregar</Button>
         </>
       )
     } else {
       return (
         <>
-          <Button variant='info' onClick={() => navigate(`/productos/${card.id}`)}>Ver Detalle</Button>
+          <Button className='me-3' variant='info' onClick={() => navigate(`/productos/${card.id}`)}>Ver Detalle</Button>
           <ModalEditProduct id={card.id} />
           <Button variant='danger' onClick={() => borrarProduct(card.id)}>borrar</Button>
         </>
@@ -75,7 +75,7 @@ const Productos = () => {
         {productosFiltrados.map((card) => (
           <Container className='col-md-3 p-3' key={card.id}>
             <Card>
-              <div>{favoritos(card)}</div>
+              <div className='text-center mt-3 mb-3'>{favoritos(card)}</div>
               {/* {!card.favoritos ? <Star color='gray' size={30} onClick={() => addFavorite(card.id)} /> : <StarFill color='gray' size={30} onClick={() => addFavorite(card.id)} />} */}
               <Card.Img variant='top' className='img-fluid' src={card.img === '' ? imgSrc : card.img} alt={card.nombre} />
               <Card.Body>

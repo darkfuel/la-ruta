@@ -3,8 +3,11 @@ import UserContext from '../context/UserContext'
 import { ProductContext } from '../context/ProductContext'
 import { useContext } from 'react'
 import ModalLogin from './Login/ModalLogin'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import { Bicycle } from 'react-bootstrap-icons'
+import { List } from 'react-bootstrap-icons'; 
 
 const Navigation = () => {
   const navigate = useNavigate()
@@ -43,12 +46,15 @@ const Navigation = () => {
     } else {
       return (
         <>
-          <NavLink className={claseActive} to='/perfil'>
-            Perfil
-          </NavLink>
-          <button onClick={logout} className='btn btn-danger'>
-            Salir
-          </button>
+<div className="d-flex justify-content-end align-items-center border-top pt-2">
+  <NavLink className={claseActive} to='/perfil'>
+    <span className='me-2'>Perfil</span>
+  </NavLink>
+  <button onClick={logout} className='btn btn-danger'>
+    Salir
+  </button>
+</div>
+
         </>
       )
     }
@@ -58,13 +64,20 @@ const Navigation = () => {
     isActive ? 'nav-item nav-link active' : 'nav-item nav-link'
 
   return (
-    <Navbar expand='lg' className='bg-body-tertiary'>
+    <Navbar expand='lg' className='bg-secondary'>
       <Container>
         <NavLink className='navbar-brand' to='/'>
           <Bicycle color='gray' size={50} className='ms-5' />
           <h4>La Ruta</h4>
         </NavLink>
-        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+            
+                <Navbar.Toggle 
+          aria-controls="basic-navbar-nav" 
+          className="bg-dark"
+        >
+          <List color="white" size={24} />
+        </Navbar.Toggle>
+        
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='ms-auto'>
             <NavLink className={claseActive} to='/'>
@@ -74,9 +87,9 @@ const Navigation = () => {
               Productos
             </NavLink>
             <NavLink className={claseActive} to='/Carrito'>
-              Carrito: <strong>${total}</strong>
+              Carrito: <strong className='me-4'>${total}</strong>
             </NavLink>
-            <div style={{ marginLeft: '30px' }}>{isLogin()}</div>
+            <div style={{  }}>{isLogin()}</div>
           </Nav>
         </Navbar.Collapse>
       </Container>
