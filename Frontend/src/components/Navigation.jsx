@@ -32,15 +32,21 @@ const Navigation = () => {
     if (getNuevoUsuario.is_admin) {
       return (
         <>
-          <NavLink className={claseActive} to='/nuevo-producto'>
-            Agregar producto
+        <div className="d-flex justify-content-end align-items-center align-items-center">
+        <NavLink to='/perfil' className={`${claseActive} border-bottom border-dark`}>
+            Admin
           </NavLink>
-          <NavLink to='/perfil' className={claseActive}>
-            Mi Perfil Administrador
+          <NavLink className={`${claseActive}`} to='/nuevo-producto'>
+          <button className='btn btn-success ms-2'>
+          Add Product
+          </button>
+            
           </NavLink>
-          <button onClick={logout} className='btn btn-danger'>
+
+          <button onClick={logout} className='btn btn-danger ms-2'>
             Salir
           </button>
+          </div>
         </>
       )
     } else {
@@ -89,8 +95,8 @@ const Navigation = () => {
             <NavLink className={claseActive} to='/Carrito'>
               Carrito: <strong className='me-4'>${total}</strong>
             </NavLink>
-            <div style={{  }}>{isLogin()}</div>
           </Nav>
+          <div style={{  }}>{isLogin()}</div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
@@ -98,3 +104,4 @@ const Navigation = () => {
 }
 
 export default Navigation
+

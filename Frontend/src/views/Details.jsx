@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Container, Card, Button } from 'react-bootstrap' // Spinner
+import { Container, Card, Row, Col, Button, Image } from 'react-bootstrap' // Spinner
 import { ProductContext } from '../context/ProductContext'
 // import React, { useEffect, useState } from 'react'
 
@@ -21,15 +21,23 @@ const DetalleProducto = () => {
 
   return (
     <Container fluid className='mt-5 '>
-      <Card className='d-flex flex-row gap-5 justify-content-center align-self-center'>
-        <Card.Img variant='top' src={details.img === '' ? imgSrc : details.img} alt={details.nombre} className='w-25 m-5' />
+      <Row>
+        <Col md={6} className='mb-4'>
+        <Image src={details.img === '' ? imgSrc : details.img} alt={details.nombre} fluid/>
+        </Col>
+        <Col>
         <Card.Body className=''>
           <Card.Title>{details.nombre}</Card.Title>
           <Card.Text>{details.descripcion}</Card.Text>
           <Card.Text>Precio: ${details.precio}</Card.Text>
           <Button variant='secondary' className='m-2' onClick={() => addProduct(details)}>Agregar</Button>
           <Button variant='info' className='m-2' onClick={() => navigate('/productos')}>Volver</Button>
-        </Card.Body>
+        </Card.Body>     
+        </Col>
+      </Row>
+      <Card className='d-flex flex-row gap-5 justify-content-center align-self-center'>
+
+
       </Card>
     </Container>
   )
