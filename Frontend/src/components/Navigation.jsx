@@ -38,7 +38,7 @@ const Navigation = () => {
           </NavLink>
           <NavLink className={`${claseActive}`} to='/nuevo-producto'>
           <button className='btn btn-success ms-2'>
-          Add Product
+          + Producto
           </button>
             
           </NavLink>
