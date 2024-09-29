@@ -76,7 +76,7 @@ const NuevoProducto = () => {
     setImgSrc(defaultFile)
   }
 
-  return (
+ return (
     <>
     <div className="container">
     <div className="row">
