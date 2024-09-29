@@ -14,7 +14,9 @@ const Destacados = () => {
         {producFiltered.map(card => (
           <Container className='col-md-3 p-3' key={card.id}>
             <Card>
+              <div className="text-center mt-3 mb-3">
               {!card.favoritos ? <Star color='gray' size={30} /> : <StarFill color='gray' size={30} />}
+              </div>
               <Card.Img variant='top' className='img-fluid' src={card.img === '' ? imgSrc : card.img} alt={card.nombre} />
               <Card.Body>
                 <Card.Title>{card.nombre}</Card.Title>

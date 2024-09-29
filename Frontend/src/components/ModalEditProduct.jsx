@@ -94,7 +94,7 @@ export default function ModalEditProduct ({ id }) {
   }
   return (
     <>
-      <MDBBtn onClick={toggleOpen}>Editar</MDBBtn>
+      <MDBBtn className='btn btn-block mt-3' onClick={toggleOpen}>Editar</MDBBtn>
 
       <MDBModal staticBackdrop tabIndex='-1' open={staticModal} onClose={() => setStaticModal(false)}>
         <MDBModalDialog>
