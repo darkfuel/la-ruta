@@ -2,7 +2,6 @@ import axios from 'axios'
 import { createContext, useEffect, useState } from 'react'
 import { ENDPOINT } from '../config/constantes.jsx'
 import Swal from 'sweetalert2'
-// import { updateFavorite } from '../../../Backend/src/models/models.products.js'
 
 export const ProductContext = createContext()
 
@@ -18,7 +17,7 @@ const ProductProvider = ({ children }) => {
 
   const getData = async () => {
     const res = await fetch(`${ENDPOINT.productos}`)
-    const { rows } = await res.json()
+    const rows = await res.json()
     setProductos(rows)
   }
 
@@ -40,7 +39,13 @@ const ProductProvider = ({ children }) => {
   const addFavorite = (id) => {
     axios.put(`${ENDPOINT.productos}/${id}`)
       .then(({ data }) => {
-        console.log('producto actualizado', data)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Producto actualizado',
+          showConfirmButton: false,
+          timer: 1500
+        })
         getData()
       })
       .catch(({ response: { data } }) => {
@@ -60,8 +65,6 @@ const ProductProvider = ({ children }) => {
           showConfirmButton: false,
           timer: 1500
         })
-
-        // Si el backend devuelve el nuevo producto, podrías agregarlo al estado de productos
         setProductos((prevProductos) => [
           ...prevProductos,
           { ...producto, img: imgSrc }
@@ -117,7 +120,23 @@ const ProductProvider = ({ children }) => {
   const borrarProduct = (id) => {
     axios.delete(`${ENDPOINT.productos}/${id}`)
       .then(({ data }) => {
-        console.log('producto eliminado', data)
+        Swal.fire({
+          title: 'Estás seguro?',
+          text: 'El producto se eliminará permanentemente',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Si, eliminar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: 'Eliminado!',
+              text: 'Se ha elimanado el producto',
+              icon: 'success'
+            })
+          }
+        })
         getData()
       })
       .catch(({ response: { data } }) => {

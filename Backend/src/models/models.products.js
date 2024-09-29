@@ -3,8 +3,8 @@ import { db } from '../database/conectionDB.js'
 export const AllProducts = async (query) => {
   try {
     const queryString = 'SELECT * FROM productos ORDER BY id DESC'
-    const result = await db(queryString)
-    return result
+    const { rows } = await db(queryString)
+    return rows
   } catch (error) {
     console.error('Error al consultar productos:', error.message)
     throw error

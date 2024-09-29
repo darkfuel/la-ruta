@@ -3,11 +3,10 @@ import UserContext from '../context/UserContext'
 import { ProductContext } from '../context/ProductContext'
 import { useContext } from 'react'
 import ModalLogin from './Login/ModalLogin'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { Bicycle } from 'react-bootstrap-icons'
-import { List } from 'react-bootstrap-icons'; 
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import { Bicycle, List } from 'react-bootstrap-icons'
 
 const Navigation = () => {
   const navigate = useNavigate()
@@ -46,14 +45,14 @@ const Navigation = () => {
     } else {
       return (
         <>
-<div className="d-flex justify-content-end align-items-center border-top pt-2">
-  <NavLink className={claseActive} to='/perfil'>
-    <span className='me-2'>Perfil</span>
-  </NavLink>
-  <button onClick={logout} className='btn btn-danger'>
-    Salir
-  </button>
-</div>
+          <div className='d-flex justify-content-end align-items-center border-top pt-2'>
+            <NavLink className={claseActive} to='/perfil'>
+              <span className='me-2'>Perfil</span>
+            </NavLink>
+            <button onClick={logout} className='btn btn-danger'>
+              Salir
+            </button>
+          </div>
 
         </>
       )
@@ -70,14 +69,14 @@ const Navigation = () => {
           <Bicycle color='gray' size={50} className='ms-5' />
           <h4>La Ruta</h4>
         </NavLink>
-            
-                <Navbar.Toggle 
-          aria-controls="basic-navbar-nav" 
-          className="bg-dark"
+
+        <Navbar.Toggle
+          aria-controls='basic-navbar-nav'
+          className='bg-dark'
         >
-          <List color="white" size={24} />
+          <List color='white' size={24} />
         </Navbar.Toggle>
-        
+
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='ms-auto'>
             <NavLink className={claseActive} to='/'>
@@ -89,7 +88,7 @@ const Navigation = () => {
             <NavLink className={claseActive} to='/Carrito'>
               Carrito: <strong className='me-4'>${total}</strong>
             </NavLink>
-            <div style={{  }}>{isLogin()}</div>
+            <div style={{ }}>{isLogin()}</div>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -25,7 +25,6 @@ const Register = ({ setBasicActive }) => {
       [name]: value
     }))
   }
-  // se utiliza para manejar eventos de entrada de datos en un formulario.
 
   const handleForm = (e) => {
     e.preventDefault()
@@ -90,18 +89,13 @@ const Register = ({ setBasicActive }) => {
         state === 'iniciar sesion' ? setBasicActive(state) : console.error('Valor inválido para setBasicActive')
       })
       .catch(error => {
-        // Manejo de error
         if (error.response) {
-          // La solicitud se realizó y el servidor respondió con un código de estado
-          // que no está en el rango de 2xx
           console.error('Error de respuesta:', error.response.data)
           window.alert(`Error: ${error.response.data.message || 'Ocurrió un error'}`)
         } else if (error.request) {
-          // La solicitud se realizó pero no se recibió respuesta
           console.error('Error de solicitud:', error.request)
           window.alert('Error: No se recibió respuesta del servidor')
         } else {
-          // Algo ocurrió al configurar la solicitud
           console.error('Error:', error.message)
           window.alert(`Error: ${error.message}`)
         }
