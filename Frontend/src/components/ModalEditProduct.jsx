@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react'
 import { MDBBtn, MDBModal, MDBModalDialog, MDBModalContent, MDBModalHeader, MDBModalTitle, MDBModalBody, MDBModalFooter, MDBInput, MDBCol, MDBRow } from 'mdb-react-ui-kit'
 import Swal from 'sweetalert2'
-import axios from 'axios'
-import { ENDPOINT } from '../config/constantes'
+// import axios from 'axios'
+// import { ENDPOINT } from '../config/constantes'
 import { ProductContext } from '../context/ProductContext'
 
 export default function ModalEditProduct ({ id }) {
   const [staticModal, setStaticModal] = useState(false)
-  const { productos, setProductos } = useContext(ProductContext)
+  const { productos, editarProducto } = useContext(ProductContext)
   const indice = Number(id)
   const producto = productos.find((prod) => prod.id === indice)
   const [productoEdit, setProductoEdit] = useState({
@@ -58,39 +58,8 @@ export default function ModalEditProduct ({ id }) {
       console.error('ID no encontrado') // Agregar una verificación de id
       return
     }
-    const token = window.sessionStorage.getItem('token')
-    axios.put(ENDPOINT.productosEdit, productoEdit, { headers: { Authorization: `Bearer ${token}` } })
-      .then(() => {
-        Swal.fire({
-          title: 'Buen trabajo!',
-          text: 'Producto editado con éxito!',
-          icon: 'success'
-        })
 
-        setProductos((prevProductos) => {
-          return prevProductos.map((prod) =>
-            prod.id === id ? { ...prod, ...productoEdit } : prod
-          )
-        })
-        setStaticModal(!staticModal)
-      })
-      .catch(error => {
-        // Manejo de error
-        if (error.response) {
-          // La solicitud se realizó y el servidor respondió con un código de estado
-          // que no está en el rango de 2xx
-          console.error('Error de respuesta:', error.response.data)
-          window.alert(`Error: ${error.response.data.message || 'Ocurrió un error'}`)
-        } else if (error.request) {
-          // La solicitud se realizó pero no se recibió respuesta
-          console.error('Error de solicitud:', error.request)
-          window.alert('Error: No se recibió respuesta del servidor')
-        } else {
-          // Algo ocurrió al configurar la solicitud
-          console.error('Error:', error.message)
-          window.alert(`Error: ${error.message}`)
-        }
-      })
+    editarProducto(productoEdit, id)
   }
   return (
     <>

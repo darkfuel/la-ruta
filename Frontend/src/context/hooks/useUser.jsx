@@ -7,7 +7,7 @@ const useUser = () => {
 
   return {
     getNuevoUsuario:
-      user,
+    user,
     setNuevoUsuario
   }
 }

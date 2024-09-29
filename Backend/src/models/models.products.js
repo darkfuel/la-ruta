@@ -1,11 +1,10 @@
 import { db } from '../database/conectionDB.js'
 
 export const AllProducts = async (query) => {
-  const queryString = 'SELECT * FROM productos ORDER BY id DESC'
-
   try {
-    const result = await db(queryString)
-    return result
+    const queryString = 'SELECT * FROM productos ORDER BY id DESC'
+    const { rows } = await db(queryString)
+    return rows
   } catch (error) {
     console.error('Error al consultar productos:', error.message)
     throw error

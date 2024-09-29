@@ -15,7 +15,6 @@ export default function ModalEditUser () {
     email: '',
     direccion: ''
   })
-  console.log(getNuevoUsuario)
 
   const userData = () => {
     if (getNuevoUsuario) {
@@ -76,6 +75,7 @@ export default function ModalEditUser () {
     if (!emailRegex.test(userEdit.email)) {
       return window.alert('Por favor ingresa un email válido')
     }
+
     const token = window.sessionStorage.getItem('token')
     axios.put(ENDPOINT.editarUsuario, userEdit, { headers: { Authorization: `Bearer ${token}` } })
       .then(() => {
@@ -88,18 +88,13 @@ export default function ModalEditUser () {
         setStaticModal(!staticModal)
       })
       .catch(error => {
-      // Manejo de error
         if (error.response) {
-        // La solicitud se realizó y el servidor respondió con un código de estado
-        // que no está en el rango de 2xx
           console.error('Error de respuesta:', error.response.data)
           window.alert(`Error: ${error.response.data.message || 'Ocurrió un error'}`)
         } else if (error.request) {
-        // La solicitud se realizó pero no se recibió respuesta
           console.error('Error de solicitud:', error.request)
           window.alert('Error: No se recibió respuesta del servidor')
         } else {
-        // Algo ocurrió al configurar la solicitud
           console.error('Error:', error.message)
           window.alert(`Error: ${error.message}`)
         }

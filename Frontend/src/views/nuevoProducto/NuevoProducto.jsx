@@ -2,14 +2,14 @@ import { useState, useContext } from 'react'
 import './nuevoProducto.css'
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit'
 import Swal from 'sweetalert2'
-import { ENDPOINT } from '../../config/constantes'
+// import { ENDPOINT } from '../../config/constantes'
 
 import { ProductContext } from '../../context/ProductContext'
-import axios from 'axios'
+// import axios from 'axios'
 
 const NuevoProducto = () => {
-  const { imgSrc, setImgSrc } = useContext(ProductContext)
-  const token = window.sessionStorage.getItem('token')
+  const { imgSrc, setImgSrc, agregarProducto } = useContext(ProductContext)
+  // const token = window.sessionStorage.getItem('token')
 
   const defaultFile = '/img/imgNuevoProducto.png'
   const [producto, setProducto] = useState({
@@ -64,26 +64,9 @@ const NuevoProducto = () => {
     formData.append('descripcion', producto.descripcion)
     formData.append('img', imgSrc) // Añade el archivo al formulario
 
-    axios
-      .post(ENDPOINT.nuevoProducto, { ...producto, img: imgSrc }, { headers: { Authorization: Bearer ${token} } })
-      .then(() => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Producto creado con éxito',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      })
-      .catch(({ response: { data } }) => {
-        console.error(data)
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: ${data.message}
-        })
-      })
 
+    agregarProducto(producto, imgSrc)
+    
     setProducto({
       nombre: '',
       precio: '',
