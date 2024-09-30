@@ -21,8 +21,6 @@ export const validarUsuario = async (email, password) => {
 
   const { rows: [usuario], rowCount } = await db(query, values)
 
-  console.log('usuario desde models:', usuario)
-
   if (rowCount === 0) {
     const newError = { code: 401, message: 'Email o clave incorrecta' }
     throw newError
@@ -30,14 +28,11 @@ export const validarUsuario = async (email, password) => {
 
   const passwordEncriptada = usuario.password
   const passwordOk = await bcrypt.compare(password, passwordEncriptada)
-  console.log('passwordOK', passwordOk)
 
   if (!passwordOk) {
     const newError = { code: 401, message: 'Email o clave incorrecta' }
     throw newError
   }
-
-  console.log(usuario.id, 'id de usuario desde models')
 
   const dataUser = {
     idUser: usuario.id,
@@ -62,7 +57,6 @@ export const getUsuario = async (email) => {
 }
 
 export const editarUsuario = async ({ nombre, apellido, telefono, email, direccion, idUser }) => {
-  console.log(nombre, apellido, telefono, email, direccion, idUser)
   const query = 'UPDATE usuarios SET nombre = $1, apellido = $2, telefono = $3, email = $4, direccion = $5 WHERE id = $6;'
   const values = [nombre, apellido, telefono, email, direccion, idUser]
   const { rows } = await db(query, values)
