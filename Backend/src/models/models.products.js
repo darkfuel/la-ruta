@@ -12,8 +12,6 @@ export const AllProducts = async (query) => {
 }
 
 export const registrarProducto = async ({ nombre, precio, stock, descripcion, img, idUser }) => {
-  console.log('datos desde models.productos', nombre, precio, stock, descripcion, img, idUser)
-
   const query = 'INSERT INTO productos (nombre, precio, stock, descripcion, img, creado_por) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;'
   const values = [nombre, precio, stock, descripcion, img, idUser]
   const { rowCount } = await db(query, values)
@@ -29,7 +27,6 @@ export const deleteById = async (id) => await db('DELETE FROM productos WHERE id
 
 export const updateFavorite = async (id) => {
   const { rows } = await db('SELECT * FROM productos WHERE id = $1;', [id])
-  console.log(rows, 'consulta')
   const favorite = (rows[0].favoritos)
   if (favorite === false) {
     const queryTrue = 'UPDATE productos SET favoritos = true WHERE id = $1;'
@@ -43,7 +40,6 @@ export const updateFavorite = async (id) => {
 }
 
 export const editarProducto = async ({ id, nombre, precio, stock, descripcion, idUser }) => {
-  console.log(id, nombre, precio, stock, descripcion, idUser)
   const query = 'UPDATE productos SET nombre = $2, precio = $3, stock = $4, descripcion = $5, creado_por = $6 WHERE id = $1;'
   const values = [id, nombre, precio, stock, descripcion, idUser]
   const { rows } = await db(query, values)
