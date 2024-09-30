@@ -4,8 +4,6 @@ import { jwtSign, jwtDecode } from '../../utils/jwt/jwt.js'
 export const saveUsers = async (req, res) => {
   try {
     const { nombre, apellido, telefono, email, direccion, password } = req.body
-    console.log(nombre, apellido, telefono, email, direccion, password)
-
     await registrarUsuario({ nombre, apellido, telefono, email, direccion, password })
     res.status(201).json({ status: true, message: 'Usuario registrado con éxito' })
   } catch (error) {
@@ -16,12 +14,8 @@ export const saveUsers = async (req, res) => {
 export const loginUsers = async (req, res) => {
   try {
     const { email, password } = req.body
-    console.log(email, password)
-
     const datosUser = await validarUsuario(email, password)
-
     const token = jwtSign(datosUser)
-
     res.status(200).json({ token })
   } catch (error) {
     console.error('Error en el login:', JSON.stringify(error, null, 2))
@@ -32,14 +26,9 @@ export const loginUsers = async (req, res) => {
 export const findByUser = async (req, res) => {
   try {
     const authorization = req.header('Authorization')
-    console.log('authorization GET/users:', authorization)
-
     const [, token] = authorization.split(' ')
     const { email } = jwtDecode(token)
-
     const user = await getUsuario(email)
-    console.log('user desde get', user)
-
     res.status(200).json(user)
   } catch (error) {
     res.status(error.code || 500).send(error)
@@ -49,12 +38,9 @@ export const findByUser = async (req, res) => {
 export const updateByIdUser = async (req, res) => {
   try {
     const { nombre, apellido, telefono, email, direccion } = req.body
-    console.log(nombre, apellido, telefono, email, direccion)
     const authorization = req.header('Authorization')
     const [, token] = authorization.split(' ')
     const { idUser } = jwtDecode(token)
-    console.log(idUser)
-
     await editarUsuario({ nombre, apellido, telefono, email, direccion, idUser })
     res.status(200).json({ message: 'Tus datos han sido actualizados con éxito!' })
   } catch (error) {

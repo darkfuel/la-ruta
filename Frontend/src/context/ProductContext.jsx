@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useState } from 'react'
 import { ENDPOINT } from '../config/constantes.jsx'
 import Swal from 'sweetalert2'
 
@@ -20,10 +20,6 @@ const ProductProvider = ({ children }) => {
     const rows = await res.json()
     setProductos(rows)
   }
-
-  useEffect(() => {
-    getData()
-  }, [])
 
   const addProduct = ({ id, precio, nombre, img, descripcion }) => {
     const productAdded = cart.find((product) => product.id === id)

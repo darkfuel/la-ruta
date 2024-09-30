@@ -2,15 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import { Star, StarFill } from 'react-bootstrap-icons'
-// import { ENDPOINT } from '../config/constantes.jsx'
 import ProductoFiltro from '../components/ProductoFiltro.jsx'
 import { ProductContext } from '../context/ProductContext.jsx'
 import UserContext from '../context/UserContext.jsx'
 import ModalEditProduct from '../components/ModalEditProduct.jsx'
-// import { registrarUsuario } from '../../../Backend/src/models/models.user.js'
 import Alert from 'react-bootstrap/Alert'
-
-
 
 const Productos = () => {
   const { addProduct, addFavorite, borrarProduct, productos, getData, filtro, setFiltro, imgSrc } = useContext(ProductContext)
@@ -32,17 +28,13 @@ const Productos = () => {
     card.descripcion.toLowerCase().includes(filtro.toLowerCase())
   )
 
-
   const handleAddProduct = (card) => {
     addProduct(card)
     setShowAlert(true)
     setTimeout(() => {
-        setShowAlert(false)
+      setShowAlert(false)
     }, 1500)
-}
-
-
-  console.log('data', productosFiltrados)
+  }
 
   const botones = (card) => {
     if (!getNuevoUsuario || !getNuevoUsuario.is_admin) {
@@ -55,19 +47,17 @@ const Productos = () => {
     } else {
       return (
         <>
-        <Container>
-          <ModalEditProduct id={card.id} />
-          <Row>
-            <Col>
-              <Button className='btn btn-block mt-3' variant='info' onClick={() => navigate(`/productos/${card.id}`)}>Detalle</Button>
-            </Col>
-            <Col>
-              <Button className='btn btn-block mt-3' variant='danger' onClick={() => borrarProduct(card.id)}>borrar</Button>
-            </Col>
-          </Row>
-        </Container>
-          
- 
+          <Container>
+            <ModalEditProduct id={card.id} />
+            <Row>
+              <Col>
+                <Button className='btn btn-block mt-3' variant='info' onClick={() => navigate(`/productos/${card.id}`)}>Detalle</Button>
+              </Col>
+              <Col>
+                <Button className='btn btn-block mt-3' variant='danger' onClick={() => borrarProduct(card.id)}>borrar</Button>
+              </Col>
+            </Row>
+          </Container>
 
         </>
       )
@@ -84,9 +74,9 @@ const Productos = () => {
     } else {
       return (
         <>
-        <div className="text-center p-3">
-        {!card.favoritos ? <Star color='gray' size={30} onClick={() => addFavorite(card.id)} /> : <StarFill color='gray' size={30} onClick={() => addFavorite(card.id)} />} <p>Agregar a destacado</p>
-        </div>
+          <div className='text-center p-3'>
+            {!card.favoritos ? <Star color='gray' size={30} onClick={() => addFavorite(card.id)} /> : <StarFill color='gray' size={30} onClick={() => addFavorite(card.id)} />} <p>Agregar a destacado</p>
+          </div>
 
         </>
       )
@@ -110,16 +100,14 @@ const Productos = () => {
                 <hr />
                 <Card.Text>{card.descripcion}</Card.Text>
                 <Card.Text>Precio: {card.precio}</Card.Text>
-                  <div>
+                <div>
                   {showAlert && (
-                <Alert variant="success" style={{ position: 'fixed', top: '20vh', right: '10px', zIndex: 1000 }}>
-                    Producto agregado
-                </Alert>
-            )}
-                  
-                  
-                  
-                  </div>
+                    <Alert variant='success' style={{ position: 'fixed', top: '20vh', right: '10px', zIndex: 1000 }}>
+                      Producto agregado
+                    </Alert>
+                  )}
+
+                </div>
                 <div>{botones(card)}</div>
 
               </Card.Body>
