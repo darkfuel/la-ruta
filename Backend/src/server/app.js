@@ -8,9 +8,6 @@ import * as routes from './routes/index.js'
 const app = express()
 const PORT = process.env.PORT ?? 3000
 
-console.log('DB_PASSWORD:', process.env.DB_PASSWORD)
-console.log('DB_PUERTO:', process.env.PORT)
-
 app.use(cors())
 app.use(express.json())
 app.use(morgan('dev'))
