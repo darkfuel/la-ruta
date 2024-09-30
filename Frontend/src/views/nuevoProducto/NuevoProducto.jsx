@@ -71,26 +71,33 @@ const NuevoProducto = () => {
   }
 
   return (
-    <>
-      <h2 className='tituloNuevoProducto'>Agrega un nuevo producto:</h2>
+   <>
+    <div className="container">
+    <div className="row">
+    <h2 className='text-center mt-2'>Agrega un nuevo producto:</h2>
+    </div>
+      
       <form className='formNuevoProducto' onSubmit={handleForm}>
-        <div className='producto d-flex flex-column'>
+        <div className="form-row">
+
+        
+        <div className='form-group col mb-4'>
           <img
             id='imgNuevoProducto'
-            className='imgNuevoProducto'
+            className='img-fluid'
             src={imgSrc}
             alt='agregar nuevo producto'
           />
           <input
             type='text'
-            className='form-control'
+            className='form-control mt-3'
             placeholder='Buscar productos...'
             value={imgSrc}
             onChange={handleChange}
           />
         </div>
 
-        <div className='detalleProducto'>
+        <div className='form-group col'>
           <MDBInput
             type='text'
             id='NombreProducto'
@@ -137,7 +144,9 @@ const NuevoProducto = () => {
             Agregar Producto
           </MDBBtn>
         </div>
-      </form>
+        </div>
+      </form>
+      </div>
     </>
   )
 }
