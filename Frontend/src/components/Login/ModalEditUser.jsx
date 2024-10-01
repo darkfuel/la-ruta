@@ -23,8 +23,7 @@ export default function ModalEditUser () {
         apellido: getNuevoUsuario.apellido,
         telefono: getNuevoUsuario.telefono,
         email: getNuevoUsuario.email,
-        direccion: getNuevoUsuario.direccion,
-        is_admin: getNuevoUsuario.is_admin
+        direccion: getNuevoUsuario.direccion
       })
     }
   }

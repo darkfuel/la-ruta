@@ -32,7 +32,7 @@ const Profile = () => {
     <div className='miPerfil Container'>
       <Row>
         <Col>
-        <h1 className='text-center mt-3'>Bienvenido a La Ruta!</h1>
+          <h1 className='text-center mt-3'>Bienvenido a La Ruta!</h1>
         </Col>
       </Row>
       <Row className='p-3'>
