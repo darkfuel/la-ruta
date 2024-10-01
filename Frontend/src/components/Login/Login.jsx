@@ -40,7 +40,6 @@ const Login = ({ setBasicActive }) => {
     }
 
     if (!emailRegex.test(user.email)) {
-      // validar el formato de email
       return window.alert('Por favor ingresa un email válido')
     }
 
@@ -53,7 +52,7 @@ const Login = ({ setBasicActive }) => {
           icon: 'success'
         })
         setNuevoUsuario({})
-        navigate('/perfil') // ruta privada del perfil
+        navigate('/perfil')
       })
       .catch(({ response: { data } }) => {
         console.error(data)

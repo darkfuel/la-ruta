@@ -31,27 +31,26 @@ const Navigation = () => {
     if (getNuevoUsuario.is_admin) {
       return (
         <>
-        <div className="d-flex justify-content-end align-items-center align-items-center">
-        <NavLink to='/perfil' className={`${claseActive} border-bottom border-dark`}>
-            Admin
-          </NavLink>
-          <NavLink className={`${claseActive}`} to='/nuevo-producto'>
-          <button className='btn btn-success ms-2'>
-          + Producto
-          </button>
-            
-          </NavLink>
+          <div className='d-flex justify-content-end align-items-center align-items-center'>
+            <NavLink to='/perfil' className={`${claseActive} border-bottom border-dark`}>
+              Admin
+            </NavLink>
+            <NavLink className={`${claseActive}`} to='/nuevo-producto'>
+              <button className='btn btn-success ms-2'>
+                + Producto
+              </button>
+            </NavLink>
 
-          <button onClick={logout} className='btn btn-danger ms-2'>
-            Salir
-          </button>
+            <button onClick={logout} className='btn btn-danger ms-2'>
+              Salir
+            </button>
           </div>
         </>
       )
     } else {
       return (
         <>
-          <div className='d-flex justify-content-end align-items-center border-top pt-2'>
+          <div className='d-flex justify-content-end align-items-center pt-2'>
             <NavLink className={claseActive} to='/perfil'>
               <span className='me-2'>Perfil</span>
             </NavLink>
@@ -95,7 +94,7 @@ const Navigation = () => {
               Carrito: <strong className='me-4'>${total}</strong>
             </NavLink>
           </Nav>
-          <div style={{  }}>{isLogin()}</div>
+          <div style={{ }}>{isLogin()}</div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
@@ -103,4 +102,3 @@ const Navigation = () => {
 }
 
 export default Navigation
-

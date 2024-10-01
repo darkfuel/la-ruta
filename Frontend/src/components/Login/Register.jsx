@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { MDBInput, MDBCol, MDBRow, MDBBtn, MDBIcon } from 'mdb-react-ui-kit'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { ENDPOINT } from '../../config/constantes'
 
 const Register = ({ setBasicActive }) => {
-  const navigate = useNavigate()
   const state = 'iniciar sesion'
   const [user, setUser] = useState({
     nombre: '',
@@ -82,7 +80,7 @@ const Register = ({ setBasicActive }) => {
     axios.post(ENDPOINT.users, userToSend)
       .then(() => {
         Swal.fire({
-          title: 'Good job!',
+          title: 'Buen trabajo!',
           text: 'Usuario registrado con éxito!',
           icon: 'success'
         })
@@ -101,13 +99,6 @@ const Register = ({ setBasicActive }) => {
         }
       })
   }
-  // se realiza la petición al endpoint user y nos redirige a la ruta login
-
-  useEffect(() => {
-    if (window.sessionStorage.getItem('token')) {
-      navigate('/perfil')
-    }
-  }, [])
 
   return (
     <div className='w-100 mt-4 d-flex justify-content-center align-self-center'>

@@ -77,7 +77,6 @@ const Productos = () => {
           <div className='text-center p-3'>
             {!card.favoritos ? <Star color='gray' size={30} onClick={() => addFavorite(card.id)} /> : <StarFill color='gray' size={30} onClick={() => addFavorite(card.id)} />} <p>Agregar a destacado</p>
           </div>
-
         </>
       )
     }
